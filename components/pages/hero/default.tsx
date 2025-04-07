@@ -24,7 +24,7 @@ export default function Hero() {
       <p className='text-muted-foreground text-center mt-2 md:mt-4 md:text-lg'>{subHeading}</p>
       <div className='flex justify-center mt-4 md:mt-8'>
         <Link href={ctaLink} target='_blank'>
-          <Button>{cta}</Button>
+          <Button size='lg'>{cta}</Button>
         </Link>
       </div>
       <div className='flex items-center justify-between bg-muted rounded-xl px-4 py-3 border mt-8 w-full max-w-md mx-auto overflow-x-auto'>

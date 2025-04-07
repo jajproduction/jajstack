@@ -1,18 +1,7 @@
-import {
-  Sheet,
-  SheetTrigger,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetDescription
-} from '@/components/ui/sheet'
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuLink
-} from '@/components/ui/navigation-menu'
+import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from '@/components/ui/navigation-menu'
 import { Layers, Menu } from 'lucide-react'
 import { ModeToggle } from '@/components/themes/mode-toggle'
 import { Outfit } from 'next/font/google'
@@ -54,11 +43,7 @@ export default function Navbar() {
       </Sheet>
       <div className='flex items-center justify-between w-full'>
         <div>
-          <Link
-            href='/'
-            className='mr-6 hidden lg:flex lg:items-center lg:space-x-1'
-            prefetch={false}
-          >
+          <Link href='/' className='mr-6 hidden lg:flex lg:items-center lg:space-x-1' prefetch={false}>
             <Layers className='h-4 w-4' />
             <span className={`${outfit.className} font-bold`}>{navTitle}</span>
           </Link>
@@ -83,7 +68,9 @@ export default function Navbar() {
       </div>
       <div className='flex items-center space-x-2'>
         <ModeToggle />
-        <Button size='sm'>Login</Button>
+        <Link href='/auth/login'>
+          <Button size='sm'>Login</Button>
+        </Link>
       </div>
     </nav>
   )

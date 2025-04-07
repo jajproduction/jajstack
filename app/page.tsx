@@ -1,3 +1,4 @@
+import Features from '@/components/pages/features/default'
 import Hero from '@/components/pages/hero/default'
 import Navbar from '@/components/pages/navbar/default'
 import Stacks from '@/components/pages/stacks/default'
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Stacks />
+      <Features />
     </main>
   )
 }

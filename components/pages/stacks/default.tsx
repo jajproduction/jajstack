@@ -2,7 +2,7 @@ import { stacks } from '@/lib/constants'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export default function Features() {
+export default function Stacks() {
   return (
     <div className='flex flex-wrap items-center justify-center gap-2 mt-12 mx-4 md:mx-48'>
       {stacks.map(stack => (

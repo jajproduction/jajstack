@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Stacks() {
   return (
-    <div className='flex flex-wrap items-center justify-center gap-2 mt-12 mx-4 md:mx-48'>
+    <div className='animate-appear opacity-0 delay-700 flex flex-wrap items-center justify-center gap-2 mt-12 mx-4 md:mx-48'>
       {stacks.map(stack => (
         <Link
           key={stack.name}

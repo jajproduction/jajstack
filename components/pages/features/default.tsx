@@ -6,7 +6,7 @@ const outfit = Outfit({ subsets: ['latin'] })
 
 export default function Features() {
   return (
-    <section className='px-4 py-16 md:px-12 lg:px-20'>
+    <div className='animate-appear opacity-0 delay-700 px-4 py-16 md:px-12 lg:px-20'>
       <div className='text-center mb-12'>
         <h1 className={`${outfit.className} text-3xl md:text-4xl font-bold`}>{feat}</h1>
         <p className='text-muted-foreground mt-4 max-w-2xl mx-auto text-base md:text-lg'>{desc}</p>
@@ -30,6 +30,6 @@ export default function Features() {
           </Card>
         ))}
       </div>
-    </section>
+    </div>
   )
 }

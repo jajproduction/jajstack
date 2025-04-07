@@ -20,7 +20,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className='flex sticky top-0 z-50 h-16 w-full shrink-0 items-center px-4 backdrop-blur-lg dark:bg-zinc-950/50 md:px-0'>
+    <nav className='animate-appear opacity-0 delay-100 flex sticky top-0 z-50 h-16 w-full shrink-0 items-center px-4 backdrop-blur-lg dark:bg-zinc-950/50 md:px-0'>
       <Sheet>
         <SheetTrigger asChild>
           <Button variant='ghost' size='icon' className='lg:hidden'>

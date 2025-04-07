@@ -6,7 +6,7 @@ const outfit = Outfit({ subsets: ['latin'] })
 
 export default function Footer() {
   return (
-    <footer className='border-t mt-24 py-8 px-4 md:px-12'>
+    <footer className='animate-appear opacity-0 delay-700 border-t mt-24 py-8 px-4 md:px-12'>
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4'>
         <div className={`${outfit.className} text-lg font-bold`}>
           {brand}

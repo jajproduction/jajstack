@@ -70,8 +70,10 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<'div'
           <div className='p-6 md:p-8'>
             <div className='flex flex-col gap-6'>
               <div className='flex flex-col items-center text-center'>
-                <h1 className={`${outfit.className} text-2xl font-bold`}>{regHeadline}</h1>
-                <p className='text-balance text-muted-foreground'>{regSubHead}</p>
+                <h1 className={`${outfit.className} animate-appear opacity-0 delay-100 text-2xl font-bold`}>
+                  {regHeadline}
+                </h1>
+                <p className='animate-appear opacity-0 delay-300 text-balance text-muted-foreground'>{regSubHead}</p>
               </div>
 
               <Form {...form}>

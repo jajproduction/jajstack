@@ -26,7 +26,7 @@ const formSchema = z.object({
   password: z
     .string()
     .trim()
-    .min(6, { message: 'Password must be at least 6 characters' })
+    .min(6, { message: 'Invalid password' })
     .refine(val => val.trim().length >= 6, {
       message: 'Password must not be empty or only whitespace'
     })

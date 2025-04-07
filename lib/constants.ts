@@ -16,7 +16,7 @@ export const links = [
 ]
 
 // hero
-export const headline = 'Launch Faster with JajStack'
+export const headline = 'Modern Fullstack Starter Built for Speed'
 export const subHeading = 'A modern TypeScript starter with auth, styled components, and clean architecture.'
 export const ctaLink = 'https://github.com/jajproduction/jajstack?tab=readme-ov-file#%EF%B8%8F-getting-started'
 export const cta = 'Get Started'

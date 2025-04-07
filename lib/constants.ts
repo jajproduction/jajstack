@@ -63,3 +63,16 @@ export const features = [
     points: ['End-to-end static typing', 'Improved DX & autocomplete', 'Catch errors early, ship faster']
   }
 ]
+
+// footer
+export const brand = 'JajStack'
+export const footerLinks = [
+  {
+    title: 'GitHub',
+    link: 'https://github.com/jajproduction/jajstack'
+  },
+  {
+    title: 'MIT License',
+    link: 'https://raw.githubusercontent.com/jajproduction/jajstack/refs/heads/master/LICENSE'
+  }
+]

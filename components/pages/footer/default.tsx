@@ -15,7 +15,13 @@ export default function Footer() {
 
         <div className='flex items-center gap-6 text-sm text-muted-foreground'>
           {footerLinks.map(link => (
-            <Link href={link.link} target='_blank' rel='noopener noreferrer' className='hover:underline'>
+            <Link
+              key={link.title}
+              href={link.link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='hover:underline'
+            >
               {link.title}
             </Link>
           ))}

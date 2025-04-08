@@ -12,6 +12,8 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { useLoading } from '@/hooks/useLoading'
+import { Spinner } from '@/components/ui/spinner'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -35,6 +37,8 @@ const formSchema = z.object({
 type LoginProps = z.infer<typeof formSchema>
 
 export function LoginForm({ className, ...props }: React.ComponentProps<'div'>) {
+  const { loading, setLoading } = useLoading()
+
   const form = useForm<LoginProps>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,7 +49,11 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'div'>) 
 
   function handleSubmit(values: LoginProps) {
     // TODO: Call login API here
-    console.log(values)
+    setLoading(true)
+    setTimeout(() => {
+      console.log(values)
+      setLoading(false)
+    }, 2000) // fake delay for testing
   }
 
   return (
@@ -88,8 +96,15 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'div'>) 
                       </FormItem>
                     )}
                   />
-                  <Button type='submit' className='w-full'>
-                    Login
+                  <Button type='submit' className='w-full' disabled={loading}>
+                    {loading ? (
+                      <div className='flex items-center gap-3'>
+                        <Spinner size='small' show={true} />
+                        <span>Please wait...</span>
+                      </div>
+                    ) : (
+                      'Login'
+                    )}
                   </Button>
                 </form>
               </Form>

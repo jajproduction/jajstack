@@ -12,6 +12,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { authFooter, authImage, regHeadline, regSubHead } from '@/lib/auth.const'
+import { useLoading } from '@/hooks/useLoading'
+import { Spinner } from '@/components/ui/spinner'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -49,6 +51,8 @@ const formSchema = z.object({
 type RegisterProps = z.infer<typeof formSchema>
 
 export function RegisterForm({ className, ...props }: React.ComponentProps<'div'>) {
+  const { loading, setLoading } = useLoading()
+
   const form = useForm<RegisterProps>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,9 +64,14 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<'div'
   })
 
   function handleSubmit(values: RegisterProps) {
-    // TODO: Call register API here
-    console.log(values)
+    // TODO: Call login API here
+    setLoading(true)
+    setTimeout(() => {
+      console.log(values)
+      setLoading(false)
+    }, 2000) // fake delay for testing
   }
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card className='overflow-hidden'>
@@ -130,8 +139,15 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<'div'
                       </FormItem>
                     )}
                   />
-                  <Button type='submit' className='w-full'>
-                    Create an account
+                  <Button type='submit' className='w-full' disabled={loading}>
+                    {loading ? (
+                      <div className='flex items-center gap-3'>
+                        <Spinner size='small' show={true} />
+                        <span>Please wait...</span>
+                      </div>
+                    ) : (
+                      'Login'
+                    )}
                   </Button>
                 </form>
               </Form>

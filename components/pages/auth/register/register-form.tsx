@@ -11,7 +11,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { authFooter, authImage, regHeadline, regSubHead } from '@/lib/constants'
+import { authFooter, authImage, regHeadline, regSubHead } from '@/lib/auth.const'
 
 const outfit = Outfit({ subsets: ['latin'] })
 

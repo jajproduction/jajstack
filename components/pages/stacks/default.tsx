@@ -1,4 +1,4 @@
-import { stacks } from '@/lib/constants'
+import { stacks } from '@/lib/ui.const'
 import Link from 'next/link'
 import Image from 'next/image'
 

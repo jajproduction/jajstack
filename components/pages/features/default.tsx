@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { desc, feat, features } from '@/lib/constants'
+import { desc, feat, features } from '@/lib/ui.const'
 import { Outfit } from 'next/font/google'
 
 const outfit = Outfit({ subsets: ['latin'] })

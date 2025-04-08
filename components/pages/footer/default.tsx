@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Outfit } from 'next/font/google'
-import { brand, footerLinks } from '@/lib/constants'
+import { brand, footerLinks } from '@/lib/ui.const'
 
 const outfit = Outfit({ subsets: ['latin'] })
 

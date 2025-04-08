@@ -7,7 +7,7 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from '@/compon
 import { Layers, Menu } from 'lucide-react'
 import { ModeToggle } from '@/components/themes/mode-toggle'
 import { Outfit } from 'next/font/google'
-import { links, navTitle } from '@/lib/constants'
+import { links, navTitle } from '@/lib/ui.const'
 import { useEffect, useState } from 'react'
 
 const outfit = Outfit({ subsets: ['latin'] })

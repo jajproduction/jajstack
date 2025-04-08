@@ -14,6 +14,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { authFooter, authImage, regHeadline, regSubHead } from '@/lib/auth.const'
 import { useLoading } from '@/hooks/useLoading'
 import { Spinner } from '@/components/ui/spinner'
+import axios from 'axios'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -63,13 +64,23 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<'div'
     }
   })
 
-  function handleSubmit(values: RegisterProps) {
-    // TODO: Call login API here
+  async function handleSubmit(values: RegisterProps) {
     setLoading(true)
-    setTimeout(() => {
-      console.log(values)
+    try {
+      const response = await axios.post('/api/auth/register', values)
+
+      if (response.status === 201) {
+        console.log('User registered:', response.data)
+        form.reset()
+        setLoading(false)
+      } else {
+        console.log('Registration failed:', response.data)
+        setLoading(false)
+      }
+    } catch (error) {
+      console.error(error)
       setLoading(false)
-    }, 2000) // fake delay for testing
+    }
   }
 
   return (

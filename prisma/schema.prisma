@@ -9,15 +9,17 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:data.db"
-  // url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  user_id       Int    @id @default(autoincrement())
-  firstname     String
-  lastname      String
-  user_email    String @unique
-  user_password String
+  user_id    Int      @id @default(autoincrement())
+  firstname  String
+  lastname   String
+  email      String   @unique
+  password   String
+  role       String   @default("staff")
+  verified   Int      @default(0)
+  created_at DateTime @default(now())
 }

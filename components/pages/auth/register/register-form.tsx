@@ -15,6 +15,7 @@ import { authFooter, authImage, regHeadline, regSubHead } from '@/lib/auth.const
 import { useLoading } from '@/hooks/useLoading'
 import { Spinner } from '@/components/ui/spinner'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -70,11 +71,12 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<'div'
       const response = await axios.post('/api/auth/register', values)
 
       if (response.status === 201) {
-        console.log('User registered:', response.data)
+        toast.success('Account created successfully!')
         form.reset()
         setLoading(false)
+        window.location.href = '/auth/login'
       } else {
-        console.log('Registration failed:', response.data)
+        toast.error('Failed to create an account!')
         setLoading(false)
       }
     } catch (error) {

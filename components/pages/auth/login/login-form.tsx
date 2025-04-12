@@ -14,6 +14,8 @@ import { useForm } from 'react-hook-form'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { useLoading } from '@/hooks/useLoading'
 import { Spinner } from '@/components/ui/spinner'
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const outfit = Outfit({ subsets: ['latin'] })
 
@@ -47,13 +49,35 @@ export function LoginForm({ className, ...props }: React.ComponentProps<'div'>) 
     }
   })
 
-  function handleSubmit(values: LoginProps) {
-    // TODO: Call login API here
+  async function handleSubmit(values: LoginProps) {
     setLoading(true)
-    setTimeout(() => {
-      console.log(values)
+    try {
+      const response = await axios.post('/api/auth/login', values)
+      form.reset()
+      toast.success('Login successfully!')
       setLoading(false)
-    }, 2000) // fake delay for testing
+
+      const { user_id, role, firstname, lastname, email } = response.data
+
+      document.cookie = `role=${role}; path=/; secure; samesite=lax; HttpOnly`
+      document.cookie = `user_id=${user_id}; path=/; secure; samesite=lax; HttpOnly`
+
+      localStorage.setItem('role', role)
+      localStorage.setItem('user_id', user_id)
+      localStorage.setItem('firstname', firstname)
+      localStorage.setItem('lastname', lastname)
+      localStorage.setItem('email', email)
+
+      window.location.href = '/dashboard'
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 403) {
+        toast.error('Your account is not verified!')
+        setLoading(false)
+      } else {
+        toast.error('Invalid credentials!')
+        setLoading(false)
+      }
+    }
   }
 
   return (
